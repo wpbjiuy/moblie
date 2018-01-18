@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>SLIDE</title>
+	<link rel="stylesheet" type="text/css" href="slide.css">
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="slide.js"></script>
+</head>
+<body>
+	<div class="slide-box">
+		<div class="slide-container">
+			<ul class="slide-ul">
+				<li class="slide-li" alt="1">
+					<img src="imgs/a_03.png">1
+				</li>
+				<li class="slide-li" alt="2">
+					<img src="imgs/a_03.png">2
+				</li>
+				<li class="slide-li" alt="3">
+					<img src="imgs/a_03.png">3
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+
+	<script type="text/javascript">
+		var slide = new Slide({
+			dom:$('.slide-container')
+		});
+
+		slide.run();
+	</script>
+</body>
+</html>
