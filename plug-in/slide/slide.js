@@ -50,14 +50,12 @@ var Slide = (function(){
 			lf:0,
 			lw:0,
 			dx:0,
-			ux:0,
 			mx:0
 		}
 		self.dom.on('mousedown.slide touchstart.slide', function(e){ 
 			clearInterval(self.setInterval);
 			self.uls.stop(true, true);
 			touchObj.dx = e.pageX || e.originalEvent.touches[0].pageX;
-			touchObj.ux = touchObj.dx;
 			touchObj.lf = parseFloat(self.uls.css('left'));
 			touchObj.lw = parseInt(self.lis.width());
 			self.dom.on('mousemove.slide touchmove.slide', function(e){
@@ -94,7 +92,6 @@ var Slide = (function(){
 	Slide.prototype.move = function (e, touchObj){
 		var x = e.pageX || e.originalEvent.touches[0].pageX;
 
-		touchObj.ux = x;
 		touchObj.mx = x - touchObj.dx;
 
 		this.slide(touchObj);
