@@ -75,7 +75,7 @@ var Slide = (function(){
 				self.slide(touchObj, self.ileft + 'px', true);
 			}
 
-			self.slideAuto();
+			!isNaN(n) && self.slideAuto();
 		})
 
 		$(window).on('resize.slide', function(){
