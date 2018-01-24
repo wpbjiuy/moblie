@@ -9,7 +9,7 @@ var Slide = (function(){
 		this.qLi = opt.qLi || '.slide-li';
 	}
 
-	Slide.prototype.run = function() {
+	Slide.prototype.run = function() { 
 		this.init();
 	};
 
@@ -17,7 +17,7 @@ var Slide = (function(){
 		var self = this;
 		if(tox){
 			var time = self.slideTime - Math.abs(touchObj.mx / touchObj.lw * self.slideTime);
-			if(time < 200) time = 200;
+			if(time < 100) time = 100;
 			if(isy){
 				self.uls.animate({left:tox}, time)
 			}else{
@@ -61,9 +61,12 @@ var Slide = (function(){
 			self.dom.on('mousemove.slide touchmove.slide', function(e){
 				self.move(e, touchObj)
 			})
+			self.isTouchThis = true;
 		});
 
-		$(window).on('mouseup.slide touchend.slide', function(){ 
+		$(window).on('mouseup.slide touchend.slide', function(e){ 
+			if(!self.isTouchThis) return;
+
 			self.dom.off('mousemove.slide touchmove.slide');
 
 			var n = Math.round(touchObj.lf/touchObj.lw);
@@ -75,7 +78,9 @@ var Slide = (function(){
 				self.slide(touchObj, self.ileft + 'px', true);
 			}
 
-			!isNaN(n) && self.slideAuto();
+			self.slideAuto();
+
+			self.isTouchThis = false;
 		})
 
 		$(window).on('resize.slide', function(){
@@ -119,7 +124,7 @@ var Slide = (function(){
 		if(this.isAuto) this.slideAuto();
 	}
 
-	Slide.prototype.slideAuto = function() {
+	Slide.prototype.slideAuto = function() { 
 		var self = this;
 		self.setInterval = setInterval(function(){
 			self.slideNext()
