@@ -9,7 +9,23 @@
 </head>
 <body>
 	<div class="slide-box">
-		<div class="slide-container">
+		<div class="slide-container" id="slide1">
+			<ul class="slide-ul">
+				<li class="slide-li" alt="1">
+					<img src="imgs/a_03.png">1
+				</li>
+				<li class="slide-li" alt="2">
+					<img src="imgs/a_03.png">2
+				</li>
+				<li class="slide-li" alt="3">
+					<img src="imgs/a_03.png">3
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="slide-box" style="margin-top:20px;">
+		<div class="slide-container" id="slide2">
 			<ul class="slide-ul">
 				<li class="slide-li" alt="1">
 					<img src="imgs/a_03.png">1
@@ -26,11 +42,15 @@
 	
 
 	<script type="text/javascript">
-		var slide = new Slide({
-			dom:$('.slide-container')
-		});
+		var slide1 = new Slide({
+			dom:$('#slide1'),
+			type:'timeSlide'
+		}).run();
 
-		slide.run();
+		var slide2 = new Slide({
+			dom:$('#slide2')
+		}).run();
+
 	</script>
 </body>
 </html>
